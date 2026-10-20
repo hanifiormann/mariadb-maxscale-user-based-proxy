@@ -5,8 +5,8 @@
 ## 1. DB sunucusu
 
 ```bash
-git clone https://github.com/<kullanici>/maxscale-user-routing.git
-cd maxscale-user-routing
+git clone https://github.com/hanifiormann/mariadb-maxscale-user-based-proxy.git
+cd mariadb-maxscale-user-based-proxy
 cp .env.example .env && vi .env
 
 ./db/containers.sh      # 4 container: eski1/eski2 (5.5), yeni1/yeni2 (latest)
@@ -34,8 +34,8 @@ maxscale --version
 for p in 3306 3307 3308 3309; do nc -zv 192.0.2.10 $p; done
 
 # Config
-git clone https://github.com/<kullanici>/maxscale-user-routing.git
-cd maxscale-user-routing
+git clone https://github.com/hanifiormann/mariadb-maxscale-user-based-proxy.git
+cd mariadb-maxscale-user-based-proxy
 cp proxy/maxscale.cnf /etc/maxscale.cnf
 mkdir -p /etc/maxscale.cnf.d
 cp proxy/maxscale.cnf.d/*.cnf /etc/maxscale.cnf.d/

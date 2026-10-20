@@ -71,8 +71,8 @@ Ayrıntılı anlatım için [docs/architecture.md](docs/architecture.md) dosyas�
 ## Hızlı başlangıç
 
 ```bash
-git clone https://github.com/<kullanici>/maxscale-user-routing.git
-cd maxscale-user-routing
+git clone https://github.com/hanifiormann/mariadb-maxscale-user-based-proxy.git
+cd mariadb-maxscale-user-based-proxy
 cp .env.example .env    # IP ve şifreleri düzenleyin
 
 # DB sunucusunda
