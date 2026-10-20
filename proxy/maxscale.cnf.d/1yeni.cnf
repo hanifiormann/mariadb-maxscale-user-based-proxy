@@ -1,0 +1,8 @@
+# /etc/maxscale.cnf.d/1yeni.cnf
+# 1yeni kullanıcısının tüm sorguları → yeni1
+[F-1yeni]
+type=filter
+module=namedserverfilter
+user=1yeni
+match01=/.*/
+target01=yeni1

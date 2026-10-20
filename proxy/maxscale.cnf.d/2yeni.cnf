@@ -1,0 +1,8 @@
+# /etc/maxscale.cnf.d/2yeni.cnf
+# 2yeni kullanıcısının tüm sorguları → yeni2
+[F-2yeni]
+type=filter
+module=namedserverfilter
+user=2yeni
+match01=/.*/
+target01=yeni2

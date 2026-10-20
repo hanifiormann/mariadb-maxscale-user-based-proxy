@@ -1,0 +1,56 @@
+# /etc/maxscale.cnf — genel config
+# Kullanıcı başına filtreler /etc/maxscale.cnf.d/ altında tanımlıdır.
+# DB_HOST (192.0.2.10) ve şifreleri kendi ortamınıza göre değiştirin.
+
+[maxscale]
+threads=auto
+admin_host=127.0.0.1
+admin_port=8989
+admin_gui=false
+
+# --- Backend sunucular (DB sunucusu) ---
+[eski1]
+type=server
+address=192.0.2.10
+port=3306
+
+[eski2]
+type=server
+address=192.0.2.10
+port=3307
+
+[yeni1]
+type=server
+address=192.0.2.10
+port=3308
+
+[yeni2]
+type=server
+address=192.0.2.10
+port=3309
+
+# --- Monitör ---
+[DB-Monitor]
+type=monitor
+module=mariadbmon
+servers=eski1,eski2,yeni1,yeni2
+user=maxscale
+password=CHANGE_ME_MAXPASS
+monitor_interval=2000ms
+
+# --- Servis ---
+# filters= satırı joker kabul etmez; her yeni kullanıcının filtresi buraya eklenir.
+[MultiDB-Service]
+type=service
+router=readwritesplit
+servers=eski1,eski2,yeni1,yeni2
+user=maxscale
+password=CHANGE_ME_MAXPASS
+filters=F-1eski|F-2eski|F-1yeni|F-2yeni
+master_failure_mode=fail_on_write
+
+# --- Tek giriş portu ---
+[MultiDB-Listener]
+type=listener
+service=MultiDB-Service
+port=4006

@@ -1,0 +1,8 @@
+# /etc/maxscale.cnf.d/1eski.cnf
+# 1eski kullanıcısının tüm sorguları → eski1
+[F-1eski]
+type=filter
+module=namedserverfilter
+user=1eski
+match01=/.*/
+target01=eski1
